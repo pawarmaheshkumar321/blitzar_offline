@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../extras/style/style.dart';
@@ -24,7 +26,7 @@ Widget ui_add_textfield(double textFieldwidth, double textFieldheight, TextEditi
       ),
 
       new Padding(
-        padding: EdgeInsets.fromLTRB(0, 10, 15, 0),
+        padding: EdgeInsets.fromLTRB(Platform.isWindows ? 0 : 17, 10, 15, 0),
         child: new Container(
           width: textFieldwidth,
           height: textFieldheight,
@@ -79,7 +81,7 @@ Widget ui_add_textfield_SingleSelectChip(BuildContext context, double textFieldw
         ],
       ),
       new Padding(
-        padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+        padding: EdgeInsets.fromLTRB(Platform.isWindows ? 0 : 17, 10, 15, 0),
         child: new Container(
           width: textFieldwidth,
           height: textFieldheight,
