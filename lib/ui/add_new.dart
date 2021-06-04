@@ -192,7 +192,7 @@ Widget ui_add_textfield_datepicker(BuildContext context, double textFieldwidth, 
 
 
 //textfield -- searchable dropdown
-Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth, double textFieldheight, List<DropdownMenuItem> items_batnamvalue, TextEditingController _textf_contro_batmanvalue_selected_value, String label, String hint){
+Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth, double textFieldheight, List<DropdownMenuItem> items_batnamvalue, String selectedValue_batnamvalue, TextEditingController _textf_contro_batmanvalue_selected_value, String label, String hint){
   return new Column(
     children: [
       new Row(
@@ -226,7 +226,7 @@ Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth
           child : new SearchableDropdown(
             isExpanded: true,
             items: items_batnamvalue,
-            value: _textf_contro_batmanvalue_selected_value.text,
+            value: selectedValue_batnamvalue,
             underline: Padding(
               padding: EdgeInsets.all(5),
             ),
@@ -238,6 +238,7 @@ Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth
               SystemChannels.textInput.invokeMethod('TextInput.hide');
               FocusScope.of(context).requestFocus(new FocusNode());
 
+              selectedValue_batnamvalue = value;
               _textf_contro_batmanvalue_selected_value.text = value;
 
             },
