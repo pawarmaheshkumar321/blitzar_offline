@@ -226,7 +226,7 @@ Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth
           child : new SearchableDropdown(
             isExpanded: true,
             items: items_batnamvalue,
-            value: selectedValue_batnamvalue,
+            value: selectedValue_batnamvalue == null ? selectedValue_batnamvalue = _textf_contro_batmanvalue_selected_value.text  : selectedValue_batnamvalue = _textf_contro_batmanvalue_selected_value.text,
             underline: Padding(
               padding: EdgeInsets.all(5),
             ),
