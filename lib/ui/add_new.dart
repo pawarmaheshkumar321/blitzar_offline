@@ -192,7 +192,7 @@ Widget ui_add_textfield_datepicker(BuildContext context, double textFieldwidth, 
 
 
 //textfield -- searchable dropdown
-Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth, double textFieldheight, List<DropdownMenuItem> items_batnamvalue, String selectedValue_batnamvalue, String label, String hint){
+Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth, double textFieldheight, List<DropdownMenuItem> items_batnamvalue, String selectedValue_batnamvalue, String label, String hint, Function after_function(String)){
   return new Column(
     children: [
       new Row(
@@ -239,6 +239,7 @@ Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth
               FocusScope.of(context).requestFocus(new FocusNode());
 
                 selectedValue_batnamvalue = value;
+                after_function(value);
 
             },
           ),
