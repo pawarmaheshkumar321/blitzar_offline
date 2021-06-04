@@ -2,10 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:searchable_dropdown/searchable_dropdown.dart';
 import '../extras/style/style.dart';
 
 
-//Simple text textfield
+//textfield -- Simple text
 Widget ui_add_textfield(double textFieldwidth, double textFieldheight, TextEditingController _textf_contro_batmanvalue, String label, String hint){
   return new Column(
     children: [
@@ -63,7 +64,7 @@ Widget ui_add_textfield(double textFieldwidth, double textFieldheight, TextEditi
 }
 
 
-//Single chip textfield
+//textfield -- Single chip
 Widget ui_add_textfield_SingleSelectChip(BuildContext context, double textFieldwidth, double textFieldheight, TextEditingController _textf_contro_batmanvalue, List<String> chips_batmanvalue, String tempresult_batmanvalue){
   return new Column(
     children: [
@@ -126,7 +127,7 @@ Widget ui_add_textfield_SingleSelectChip(BuildContext context, double textFieldw
 }
 
 
-//datepicker textfields
+//textfield -- datepicker
 Widget ui_add_textfield_datepicker(BuildContext context, double textFieldwidth, double textFieldheight, TextEditingController _textf_contro_batmanvalue, String label, String hint){
   return new Column(
     children: [
@@ -190,9 +191,62 @@ Widget ui_add_textfield_datepicker(BuildContext context, double textFieldwidth, 
 }
 
 
+//textfield -- searchable dropdown
+Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth, double textFieldheight, List<DropdownMenuItem> items_batnamvalue, String selectedValue_batnamvalue, String label, String hint){
+  return new Column(
+    children: [
+      new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          new Container(
+            width: textFieldwidth,
+            child : new Text("$label",
+              style: TextStyle(
+                fontSize: colorStyle.textfield_text_fontsize,
+                fontWeight: colorStyle.textfield_text_fontweight,
+                color: colorStyle.textfield_label_text_color,
+                fontFamily: '${colorStyle.textfield_text_font_family}',
+              ),),
+          ),
+        ],
+      ),
 
+      new Padding(
+        padding: EdgeInsets.fromLTRB(Platform.isWindows ? 0 : 17, 10, 15, 0),
+        child: new Container(
+          width: textFieldwidth,
+          height: textFieldheight,
+          padding: EdgeInsets.fromLTRB(17, 0, 10, 0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(colorStyle.textfield_radius),),
+            border: Border.all(color: colorStyle.textfield_border_color, width: 1.0, style: BorderStyle.solid),
+            //color: colorStyle.textfield_bg_color,
+          ),
 
+          child : new SearchableDropdown(
+            isExpanded: true,
+            items: items_batnamvalue,
+            value: selectedValue_batnamvalue,
+            underline: Padding(
+              padding: EdgeInsets.all(5),
+            ),
+            hint: new Text('batmankey', style: new TextStyle(color: colorStyle.textfield_hint_text_color,fontFamily: '${colorStyle.textfield_text_font_family}',fontSize: colorStyle.textfield_hinttext_fontsize),),
+            searchHint: new Text('batmankey',
+              style: TextStyle(color: colorStyle.tf_text_color, fontSize: colorStyle.tf_font_size2, letterSpacing: 2,fontFamily: '${colorStyle.universal_font_family}'),
+            ),
+            onChanged: (value) {
+              SystemChannels.textInput.invokeMethod('TextInput.hide');
+              FocusScope.of(context).requestFocus(new FocusNode());
 
+                selectedValue_batnamvalue = value;
+
+            },
+          ),
+        ),
+      ),
+    ],
+  );
+}
 
 
 
