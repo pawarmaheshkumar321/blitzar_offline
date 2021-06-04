@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import '../extras/style/style.dart';
 
 
-
+//Simple text textfield
 Widget ui_add_textfield(double textFieldwidth, double textFieldheight, TextEditingController _textf_contro_batmanvalue, String label, String hint){
   return new Column(
     children: [
@@ -62,6 +62,8 @@ Widget ui_add_textfield(double textFieldwidth, double textFieldheight, TextEditi
   );
 }
 
+
+//Single chip textfield
 Widget ui_add_textfield_SingleSelectChip(BuildContext context, double textFieldwidth, double textFieldheight, TextEditingController _textf_contro_batmanvalue, List<String> chips_batmanvalue, String tempresult_batmanvalue){
   return new Column(
     children: [
@@ -122,6 +124,114 @@ Widget ui_add_textfield_SingleSelectChip(BuildContext context, double textFieldw
     ],
   );
 }
+
+
+//datepicker textfields
+Widget ui_add_textfield_datepicker(BuildContext context, double textFieldwidth, double textFieldheight, TextEditingController _textf_contro_batmanvalue, String label, String hint){
+  return new Column(
+    children: [
+      new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          new Container(
+            width: textFieldwidth,
+            child : new Text("$label",
+              style: TextStyle(
+                fontSize: colorStyle.textfield_text_fontsize,
+                fontWeight: colorStyle.textfield_text_fontweight,
+                color: colorStyle.textfield_label_text_color,
+                fontFamily: '${colorStyle.textfield_text_font_family}',
+              ),),
+          ),
+        ],
+      ),
+
+      new Padding(
+        padding: EdgeInsets.fromLTRB(Platform.isWindows ? 0 : 17, 10, 15, 0),
+        child: new Container(
+          width: textFieldwidth,
+          height: textFieldheight,
+          padding: EdgeInsets.fromLTRB(17, 0, 10, 0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(colorStyle.textfield_radius),),
+            border: Border.all(color: colorStyle.textfield_border_color, width: 1.0, style: BorderStyle.solid),
+            //color: colorStyle.textfield_bg_color,
+          ),
+
+          child : new TextField(
+            textAlign: TextAlign.start,
+            controller: _textf_contro_batmanvalue,
+            keyboardType: TextInputType.text,
+            /*inputFormatters: <TextInputFormatter>[
+               WhitelistingTextInputFormatter.digitsOnly
+             ],*/
+            onTap: (){
+              SystemChannels.textInput.invokeMethod('TextInput.hide');
+              FocusScope.of(context).requestFocus(new FocusNode());
+              callDatePicker(context, _textf_contro_batmanvalue);
+            },
+
+            style: TextStyle(color: colorStyle.textfield_text_color, fontSize: colorStyle.textfield_text_fontsize, letterSpacing: 2,fontFamily: '${colorStyle.textfield_text_font_family}'),
+
+            decoration: InputDecoration(
+              //prefixIcon: new Icon(FontAwesomeIcons.amazon, color: Colors.black26,),
+              border: InputBorder.none,
+              hintText: 'batmankey',
+              hintStyle: new TextStyle(color: colorStyle.textfield_hint_text_color,fontFamily: '${colorStyle.textfield_text_font_family}',fontSize: colorStyle.textfield_hinttext_fontsize),
+              contentPadding: EdgeInsets.fromLTRB(5, 10, 10, 10),
+            ),
+
+
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Supportive functionsssssssssssssssssssssssss---------------------------------------------------------//
+//Supportive functionsssssssssssssssssssssssss---------------------------------------------------------//
+//Supportive functionsssssssssssssssssssssssss---------------------------------------------------------//
+
 
 /////////////////-----------------Single chip function----------------------//
 
@@ -233,3 +343,39 @@ class _SingleSelectChipState extends State<SingleSelectChip> {
 }
 
 /////////////////-----------------Single chip class--------------------//
+
+
+
+//-------------test date picker---------------------------//
+void callDatePicker(BuildContext context, TextEditingController textEditingController) async {
+  var order = await getDate(context);
+
+  var finaldate = order;
+  textEditingController.text = finaldate.toString().substring(0, 10);
+
+
+}
+
+Future<DateTime> getDate(BuildContext context) {
+  // Imagine that this function is
+  // more complex and slow.
+  return showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(1950),
+    lastDate: DateTime(2070),
+    builder: (BuildContext context, Widget child) {
+      return Theme(
+        data: ThemeData.light(),
+        child: child,
+      );
+    },
+  );
+}
+
+//-------------test date picker---------------------------//
+
+
+//Supportive functionsssssssssssssssssssssssss---------------------------------------------------------//
+//Supportive functionsssssssssssssssssssssssss---------------------------------------------------------//
+//Supportive functionsssssssssssssssssssssssss---------------------------------------------------------//
