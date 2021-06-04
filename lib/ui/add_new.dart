@@ -240,6 +240,8 @@ Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth
 
                 selectedValue_batnamvalue = value;
 
+                return value;
+
             },
           ),
         ),
