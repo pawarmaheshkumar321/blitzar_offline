@@ -254,7 +254,7 @@ Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth
 
 
 //textfield -- chips multiple
-Widget ui_add_textfield_MultipleSelectChip(BuildContext context, double textFieldwidth, double textFieldheight, TextEditingController _textf_contro_batmanvalue, List<String> chips_batmanvalue, String tempresult_batmanvalue, String label, String hint){
+Widget ui_add_textfield_MultipleSelectChip(BuildContext context, double textFieldwidth, double textFieldheight, TextEditingController _textf_contro_batmanvalue, List<String> chips_multiple_batmanvalue, List<String> temp_multiple_batmanvalue, String label, String hint){
   return new Column(
     children: [
       new Row(
@@ -296,7 +296,7 @@ Widget ui_add_textfield_MultipleSelectChip(BuildContext context, double textFiel
               SystemChannels.textInput.invokeMethod('TextInput.hide');
               FocusScope.of(context).requestFocus(new FocusNode());
 
-              _show_MultipleChipSelectionDialog(context, chips_batmanvalue, chips_batmanvalue, _textf_contro_batmanvalue, label, hint);
+              _show_MultipleChipSelectionDialog(context, chips_multiple_batmanvalue, temp_multiple_batmanvalue, _textf_contro_batmanvalue, label, hint);
             },
 
             style: TextStyle(color: colorStyle.textfield_text_color, fontSize: colorStyle.textfield_text_fontsize, letterSpacing: 2,fontFamily: '${colorStyle.textfield_text_font_family}'),
