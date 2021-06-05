@@ -464,7 +464,7 @@ _show_MultipleChipSelectionDialog(BuildContext context, List<String> chips_multi
               onSelectionChanged: (selectedList) {
 
                   temp_multiple_batmanvalue = selectedList;
-                  _textf_contro_batmanvalue.text = temp_multiple_batmanvalue.toString();
+                  _textf_contro_batmanvalue.text = temp_multiple_batmanvalue.toString().replaceAll("[", "").replaceAll("]", "");
 
               },
             ),
