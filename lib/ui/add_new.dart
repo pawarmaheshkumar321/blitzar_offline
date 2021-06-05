@@ -251,7 +251,7 @@ Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth
 
 
 //group radio buttons
-Widget ui_add_group_radio_buttons(double textFieldwidth, double textFieldheight, TextEditingController _textf_contro_batmanvalue, List<String> _status_batmanvalue, String _verticalGroupValue_batmanvalue){
+Widget ui_add_group_radio_buttons(double textFieldwidth, double textFieldheight, TextEditingController _textf_contro_batmanvalue, List<String> _status_batmanvalue, String _verticalGroupValue_batmanvalue, String label){
   return new Column(
       children: [
         new Row(
@@ -259,7 +259,7 @@ Widget ui_add_group_radio_buttons(double textFieldwidth, double textFieldheight,
           children: <Widget>[
             new Container(
               width: textFieldwidth,
-              child : new Text("Batmankey",
+              child : new Text("$label",
                 style: TextStyle(
                   fontSize: colorStyle.textfield_text_fontsize,
                   fontWeight: colorStyle.textfield_text_fontweight,
@@ -275,7 +275,7 @@ Widget ui_add_group_radio_buttons(double textFieldwidth, double textFieldheight,
             new Padding(padding: EdgeInsets.fromLTRB(40, 0, 0, 0)),
             RadioGroup<String>.builder(
               direction: Axis.horizontal,
-              groupValue: _verticalGroupValue_batmanvalue,
+              groupValue: _textf_contro_batmanvalue.text,
               onChanged: (value) => {
                 _verticalGroupValue_batmanvalue = value,
                 _textf_contro_batmanvalue.text = value,
