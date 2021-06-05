@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:group_radio_button/group_radio_button.dart';
 import 'package:searchable_dropdown/searchable_dropdown.dart';
 import '../extras/style/style.dart';
 
@@ -249,8 +250,47 @@ Widget ui_add_textfield_seachable_dd(BuildContext context, double textFieldwidth
 }
 
 
-//textfield -- group radio buttons
+//group radio buttons
+Widget ui_add_group_radio_buttons(double textFieldwidth, double textFieldheight, TextEditingController _textf_contro_batmanvalue, List<String> _status_batmanvalue, String _verticalGroupValue_batmanvalue){
+  return new Column(
+      children: [
+        new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Container(
+              width: textFieldwidth,
+              child : new Text("Batmankey",
+                style: TextStyle(
+                  fontSize: colorStyle.textfield_text_fontsize,
+                  fontWeight: colorStyle.textfield_text_fontweight,
+                  color: colorStyle.textfield_label_text_color,
+                  fontFamily: '${colorStyle.textfield_text_font_family}',
+                ),),
+            ),
+          ],
+        ),
+        new Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            new Padding(padding: EdgeInsets.fromLTRB(40, 0, 0, 0)),
+            RadioGroup<String>.builder(
+              direction: Axis.horizontal,
+              groupValue: _verticalGroupValue_batmanvalue,
+              onChanged: (value) => {
+                _verticalGroupValue_batmanvalue = value,
+                _textf_contro_batmanvalue.text = value,
+              },
+              items: _status_batmanvalue,
+              itemBuilder: (item) => RadioButtonBuilder(
+                item,
+              ),
+            ),
 
+          ],
+        ),
+      ],
+  );
+}
 
 
 //textfield -- chips multiple
@@ -315,7 +355,6 @@ Widget ui_add_textfield_MultipleSelectChip(BuildContext context, double textFiel
     ],
   );
 }
-
 
 
 
