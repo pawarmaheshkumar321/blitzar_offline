@@ -5,11 +5,11 @@ import 'dart:async';
 import 'dart:convert';
 
 
-class common_db_functions{
 
 
 
-  customQuery(String custom_query) async{
+
+  customQuery(String url_prefix, String custom_query) async{
     print(custom_query);
 
     var createDoc = <String, String>{};
@@ -30,7 +30,7 @@ class common_db_functions{
   }
 
 
-  customQueryResponseArray(String table_name, String primary_keyid, String primary_keyid_value, String custom_query) async{
+  customQueryResponseArray(String url_prefix, String table_name, String primary_keyid, String primary_keyid_value, String custom_query) async{
     print(custom_query);
 
     var createDoc = <String, String>{};
@@ -55,7 +55,7 @@ class common_db_functions{
 
 
 
-  customQueryMultiple(String custom_query, String custom_query2, String custom_query3, String custom_query4, String custom_query5, String custom_query6) async{
+  customQueryMultiple(String url_prefix, String custom_query, String custom_query2, String custom_query3, String custom_query4, String custom_query5, String custom_query6) async{
     print(custom_query);
 
     var createDoc = <String, String>{};
@@ -81,7 +81,7 @@ class common_db_functions{
   }
 
 
-  updateData(String table_name, String primary_keyid, String primary_keyid_value, String dbkey, String newvalue) async{
+  updateData(String url_prefix, String table_name, String primary_keyid, String primary_keyid_value, String dbkey, String newvalue) async{
 
     var createDoc = <String, String>{};
     createDoc['table_name'] = table_name;
@@ -104,7 +104,7 @@ class common_db_functions{
   }
 
 
-  addPrimaryKeyToData(String table_name, String primary_keyid, String primary_keyid_value) async{
+  addPrimaryKeyToData(String url_prefix, String table_name, String primary_keyid, String primary_keyid_value) async{
 
     var createDoc = <String, String>{};
     createDoc['table_name'] = table_name;
@@ -125,4 +125,3 @@ class common_db_functions{
 
 
 
-}
