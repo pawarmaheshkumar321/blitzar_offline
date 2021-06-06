@@ -10,6 +10,9 @@ environment:
 dependencies:
   searchable_dropdown: 1.1.0
   group_radio_button: ^1.0.1
+  random_string: ^0.0.2
+  http: ^0.12.0+1
+
   flutter:
     sdk: flutter
 
